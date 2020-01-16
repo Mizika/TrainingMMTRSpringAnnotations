@@ -1,7 +1,6 @@
 package mmtr.springAnnotation.dictionary;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -23,8 +22,16 @@ public class Action implements IAction {
 
     public void action() throws IOException {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+
         SearchDictionary searchDictionary = context.getBean("searchDictionary", SearchDictionary.class);
         searchDictionary.searchFiles();
+
+        DictionarySelection dictionarySelection = context.getBean("dictionarySelection", DictionarySelection.class);
+        dictionarySelection.chooseDic();
+
+        ReadAllFromFile readAllFromFile = context.getBean("readFromFile", ReadAllFromFile.class);
+        System.out.println(readAllFromFile.readAllFromFile());
+
         context.close();
     }
 }
