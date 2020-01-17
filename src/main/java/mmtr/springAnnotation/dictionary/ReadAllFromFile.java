@@ -14,7 +14,7 @@ public class ReadAllFromFile {
     private static String path;
     private static DictionarySelection dictionarySelection;
 
-    @Value("C:\\SpringAnnotationsDictionary\\dictionaries")
+    @Value("${pathToSearch}")
     public void setPath(String path) {
         ReadAllFromFile.path = path;
     }

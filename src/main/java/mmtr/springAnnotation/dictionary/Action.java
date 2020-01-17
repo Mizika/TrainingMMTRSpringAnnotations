@@ -1,6 +1,6 @@
 package mmtr.springAnnotation.dictionary;
 
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Action implements IAction {
             "7. Выбрать другой словарь.\n";
 
     public void action() throws IOException {
-        ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(SpringConf.class);
 
         SearchDictionary searchDictionary = context.getBean("searchDictionary", SearchDictionary.class);
         searchDictionary.searchFiles();
